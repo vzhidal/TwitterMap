@@ -30,10 +30,17 @@ var T = new Twit({
 
 //Socket.io
 var io = require('socket.io').listen(server);
-var stream = T.stream('statuses/sample');
+var stream = T.stream('statuses/filter', {locations: [-180,-90,180,90]});
 
 io.sockets.on('connection', function (socket) {
 	stream.on('tweet', function (tweet) {
-		socket.emit('tweet', { tweet: tweet});
+		if(tweet.coordinates){
+			socket.emit('tweet', {
+				pic: tweet.user.profile_image_url,
+				screen_name: tweet.user.screen_name,
+				coordinates: tweet.coordinates.coordinates,
+				text: tweet.text
+			});
+		}
 	});
 });

@@ -1,9 +1,12 @@
-
-<h1>Real-time geolocated tweets</h1>
-<strong>
-	powered by <a href="https://github.com/danzajdband/Tuiter">Tuiter</a>, <a href="http://expressjs.com">Express</a>,
-	<a href="http://socket.io">Socket.io</a> and <a href="http://maps.google.com">Google maps</a> - You can see the code
-	<a href="https://github.com/danzajdband/Tuiter/tree/master/examples/map">here</a></strong>
-
 <div id="map"></div>
 
+<ul>
+	<li data-ng-repeat="tweet in tweets">
+		<p>
+			<img src="{{tweet.pic}}">
+			<span>{{tweet.screen_name}}</span>
+		</p>
+
+		<p>{{tweet.text}}</p>
+	</li>
+</ul>

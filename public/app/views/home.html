@@ -1,7 +1,10 @@
 <div id="map"></div>
 
+<div data-custom-paging="paging"
+	 data-total-items="tweets.length"></div>
+
 <ul>
-	<li data-ng-repeat="tweet in tweets">
+	<li data-ng-repeat="tweet in tweets | pagingFilter:paging">
 		<p>
 			<img src="{{tweet.pic}}">
 			<span>{{tweet.screen_name}}</span>
@@ -10,3 +13,4 @@
 		<p>{{tweet.text}}</p>
 	</li>
 </ul>
+

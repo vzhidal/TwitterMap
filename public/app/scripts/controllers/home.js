@@ -5,13 +5,20 @@ angular.module('twitterMapApp')
 //
 		$scope.tweets = [];
 
+		$scope.paging = {
+			currentPage: 1,
+			numPerPage: 5,
+			maxSize: 6,
+			itemsPerPage: [5, 10, 15, 20]
+		};
+
 		var circles = [
 
 		];
 
 
 		var mapOptions = {
-			center: new google.maps.LatLng(-34.397, 150.644),
+			center: new google.maps.LatLng(37.774929500000000000,-122.419415500000010000),
 			zoom: 2,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -25,6 +32,9 @@ angular.module('twitterMapApp')
 			var myLatlng = new google.maps.LatLng(data.coordinates[1], data.coordinates[0]);
 			for(var i = 0; i < circles.length; i++) {
 				if(circles[i] && condition(circles[i], myLatlng)) {
+
+					$scope.tweets.push(data);
+					$scope.$digest();
 
 					var marker = new google.maps.Marker({
 						position: myLatlng,

@@ -1,0 +1,8 @@
+<form class="search-form" role="form">
+	<div class="tags-input-wrapper">
+		<tags-input class="tags-input" ng-model="tagsQuery" placeholder="Enter a tag" min-length="1"
+					on-tag-added="tagAdded($tag)" on-tag-removed="tagRemoved($tag)">
+			<auto-complete min-length="1" source="loadTags($query)"></auto-complete>
+		</tags-input>
+	</div>
+</form>

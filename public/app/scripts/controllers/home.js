@@ -1,9 +1,23 @@
 'use strict';
 
 angular.module('twitterMapApp')
-	.controller('HomeCtrl', function ($scope) {
+	.controller('HomeCtrl', function($scope, $filter) {
 //
 		$scope.tweets = [];
+		$scope.tags = [
+			{text: 'ok', name: 'ok'},
+			{text: 'name', name: 'name'}
+		];
+
+		$scope.filteredTweets = [];
+
+		$scope.tagsQuery = [];
+
+		$scope.addTagg = function(tagg) {
+			if(!_.where($scope.tagsQuery, {text: tagg}).length) {
+				$scope.tagsQuery.push({text: tagg});
+			}
+		};
 
 		$scope.paging = {
 			currentPage: 1,
@@ -18,7 +32,7 @@ angular.module('twitterMapApp')
 
 
 		var mapOptions = {
-			center: new google.maps.LatLng(37.774929500000000000,-122.419415500000010000),
+			center: new google.maps.LatLng(37.774929500000000000, -122.419415500000010000),
 			zoom: 2,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -27,14 +41,13 @@ angular.module('twitterMapApp')
 			mapOptions);
 
 
+		var markers = [];
 		var socket = io.connect();
-		socket.on('tweet', function (data) {
+		socket.on('tweet', function(data) {
 			var myLatlng = new google.maps.LatLng(data.coordinates[1], data.coordinates[0]);
 			for(var i = 0; i < circles.length; i++) {
-				if(circles[i] && condition(circles[i], myLatlng)) {
+				if(circles[i] && condition(circles[i], myLatlng) && $filter('tagsFilter')([data], $scope.tagsQuery).length) {
 
-					$scope.tweets.push(data);
-					$scope.$digest();
 
 					var marker = new google.maps.Marker({
 						position: myLatlng,
@@ -47,9 +60,23 @@ angular.module('twitterMapApp')
 						content: "<img src='" + data.pic + "' style='float:left; padding: 5px;' /><strong>" + data.screen_name + "</strong>: " + data.text
 					});
 
-					google.maps.event.addListener(marker, 'click', function () {
+					google.maps.event.addListener(marker, 'click', function() {
 						infowindow.open(map, marker);
 					});
+
+					markers.push(marker);
+
+					$scope.tweets.push(data);
+					if($scope.tweets.length > 1000) {
+						var count = $scope.tweets.length - 1000;
+						$scope.tweets = $scope.tweets.slice(Math.max(count, 1));
+
+						for(var i = 0; i < count; i++) {
+							markers[i].setMap(null);
+							markers = markers.splice(i, 1);
+						}
+					}
+					$scope.$digest();
 				}
 			}
 		});
@@ -91,10 +118,10 @@ angular.module('twitterMapApp')
 			});
 			drawingManager.setMap(map);
 
-			google.maps.event.addListener(drawingManager, 'circlecomplete', function (circle) {
+			google.maps.event.addListener(drawingManager, 'circlecomplete', function(circle) {
 				circles.push(circle);
 
-				google.maps.event.addListener(circle, 'click', function (event) {
+				google.maps.event.addListener(circle, 'click', function(event) {
 					circle.setMap(null);
 
 					circles = _.without(circles, _.findWhere(circles, circle));

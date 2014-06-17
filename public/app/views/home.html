@@ -1,10 +1,19 @@
 <div id="map"></div>
-
+<h1>Tags list:</h1>
+<span class="tag" data-ng-click="addTagg(tag.name)"
+	  data-ng-repeat="tag in tags">
+			{{tag.name}}
+		</span>
+<div class="search-box">
+	<div data-tags-filter
+		 data-tags-query="tagsQuery"
+		 data-tags="tags"></div>
+</div>
 <div data-custom-paging="paging"
-	 data-total-items="tweets.length"></div>
+	 data-total-items="filteredTweets.length"></div>
 
 <ul>
-	<li data-ng-repeat="tweet in tweets | pagingFilter:paging">
+	<li data-ng-repeat="tweet in filteredTweets = (tweets | tagsFilter:tagsQuery | reverse) | pagingFilter:paging">
 		<p>
 			<img src="{{tweet.pic}}">
 			<span>{{tweet.screen_name}}</span>
@@ -13,4 +22,7 @@
 		<p>{{tweet.text}}</p>
 	</li>
 </ul>
+
+<div data-custom-paging="paging"
+	 data-total-items="filteredTweets.length"></div>
 

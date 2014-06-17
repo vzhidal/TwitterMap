@@ -2,3 +2,12 @@
 	height: 500px;
 	width: 1000px;
 }
+
+.tag {
+	background: #add8e6;
+	color: white;
+	padding: 10px 15px;
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 2px;
+}

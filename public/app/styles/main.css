@@ -8,6 +8,17 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'NinjamockBasic';
+    src: url('../fonts/Basic/Basic.eot');
+    src: url('../fonts/Basic/Basic.eot') format('embedded-opentype'),
+    url('../fonts/Basic/Basic.woff') format('woff'),
+    url('../fonts/Basic/Basic.svg#Basic') format('svg'),
+    url('../fonts/Basic/Basic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body *{
     font-family: 'TomsHandwritten';
     box-sizing: border-box;
@@ -16,6 +27,8 @@ body *{
     -o-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
+
+/*region bootstap override*/
 
 .btn {
     background: #fff;
@@ -27,8 +40,83 @@ body *{
     overflow: hidden;
 }
 
+.navbar.navbar-default {
+    background: #eee;
+}
+
+.navbar-default .navbar-nav > li > a{
+    font-size: 22px;
+    color: #0088cc;
+}
+
+.navbar li.active {
+    background: #ccc;
+}
+
+.navbar li.active a{
+    color: #515151;
+    background: #ccc;
+}
+
+/*endregion bootstrap override*/
+
+/*region header*/
+
+.who-am-i {
+    padding: 0 16px;
+    text-align: center;
+}
+
+.who-am-i .btn{
+    width: 200px;
+    font-size: 26px;
+    margin-top: 8px;
+}
+
+.hero-btn {
+    float: left;
+}
+
+.regular-btn {
+    float: right;
+}
+
+.who-am-i-text{
+    font-size: 38px;
+}
+
+tags-input .tags .input{
+    font-family: 'TomsHandwritten';
+    font-size: 22px;
+}
+
+tags-input .host {
+    text-align: center;
+}
+
+tags-input .tags {
+    border-radius: 4px;
+    display: inline-block;
+    width: 94%;
+    border-bottom-color: #686868;
+}
+
+.compas-icon{
+    font-size: 18px;
+    font-family: NinjamockBasic;
+    text-align: center;
+    color: #515151;
+}
+
+.map-controls .btn {
+    margin-right: 10px;
+    padding: 0 10px;
+}
+
+/*endregion header*/
 
 #map {
+    margin: 20px 0;
 	height: 280px;
 	width: 100%;
 }
@@ -53,3 +141,102 @@ body *{
 	margin-right: 5px;
 }
 
+/* region footer*/
+
+footer .navbar {
+    text-align: center;
+    position: relative;
+}
+
+.copyright {
+    font-size: 18px;
+    margin: 13px 0;
+    display: inline-block;
+}
+
+#shareContainer {
+    float: right;
+    margin: 10px 0;
+    position: absolute;
+    right: 20px;
+}
+
+#shareContainer li {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+#shareContainer li a {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-image: url('../images/spritesheet-share-icons.png');
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    border-radius: 4px;
+}
+
+#shareContainer li a.facebook {
+    background-position: left top;
+}
+
+#shareContainer li a.twitter {
+    background-position: -40px top;
+}
+
+#shareContainer li a.pinterest {
+    background-position: -80px top;
+}
+
+#shareContainer li a.googleplus {
+    background-position: -120px top;
+}
+
+#shareContainer li a.instagram {
+    background-position: -160px top;
+}
+
+#shareContainer li a.youtube {
+    background-position: -200px top;
+}
+
+#shareContainer li a.linkedin {
+    background-position: -240px top;
+}
+
+#shareContainer li a.rss {
+    background-position: left -112px;
+}
+
+#shareContainer li a.facebook:hover {
+    background-position: left  -40px;
+}
+
+#shareContainer li a.twitter:hover {
+    background-position: -40px -40px;
+}
+
+#shareContainer li a.pinterest:hover {
+    background-position: -80px -40px;
+}
+#shareContainer li a.googleplus:hover {
+    background-position: -120px  -40px;
+}
+
+#shareContainer li a.instagram:hover {
+    background-position: -160px  -40px;
+}
+
+#shareContainer li a.youtube:hover {
+    background-position: -200px -40px;
+}
+
+#shareContainer li a.linkedin:hover {
+    background-position: -240px -40px;
+}
+
+#shareContainer li a.rss:hover {
+    background-position: left -152px;
+}
+
+/* endregion footer*/

@@ -29,16 +29,27 @@ body *{
 
 
 #map {
-	height: 500px;
-	width: 1000px;
+	height: 280px;
+	width: 100%;
 }
 
-.tag {
+
+.tags-list{
+	padding: 0;
+	margin: 0;
+}
+.tags-list li{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+}
+.tags-list .tag {
 	background: #add8e6;
 	color: white;
 	padding: 10px 15px;
 	display: inline-block;
 	cursor: pointer;
-	margin-right: 2px;
+	margin-right: 5px;
 }
 

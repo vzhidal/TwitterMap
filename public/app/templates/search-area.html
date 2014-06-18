@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="search-box">
+			<div data-tags-filter
+				 data-tags-query="tagsQuery"
+				 data-tags="tags"></div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div id="map"></div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="btn-group text-right">
+			<button class="btn">Clear Map</button>
+			<button class="btn">My Location</button>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<ul>
+			<li data-ng-repeat="tweet in filteredTweets = (tweets | tagsFilter:tagsQuery | reverse) | pagingFilter:paging">
+				<p>
+					<img src="{{tweet.pic}}">
+					<span>{{tweet.screen_name}}</span>
+				</p>
+
+				<p>{{tweet.text}}</p>
+			</li>
+		</ul>
+		<div data-custom-paging="paging"
+			 data-total-items="filteredTweets.length"></div>
+	</div>
+</div>
+
+
+
+
+
+
+

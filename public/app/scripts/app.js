@@ -10,19 +10,16 @@ angular.module('twitterMapApp').config(function ($stateProvider, $urlRouterProvi
 		.state('home', {
 			url: '/',
 			templateUrl: 'views/home.html',
-			controller: 'HomeCtrl as homeCtrl',
-			resolve: {}
+			controller: 'HomeCtrl as homeCtrl'
 		})
 		.state('home.hero', {
 			url: 'hero',
 			templateUrl: 'views/hero.html',
-			controller: 'PersonCtrl as personCtrl',
-			resolve: {}
+			controller: 'PersonCtrl as personCtrl'
 		})
 		.state('home.regular', {
 			url: 'regular',
 			templateUrl: 'views/regular.html',
-			controller: 'PersonCtrl as personCtrl',
-			resolve: {}
+			controller: 'PersonCtrl as personCtrl'
 		})
 });

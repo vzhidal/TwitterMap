@@ -12,7 +12,7 @@ angular.module('twitterMapApp')
 	.filter('tagsFilter', function() {
 		return function(tweets, tagsQuery) {
 			return _.filter(tweets, function(tweet) {
-				var message = tweet.text.split(' ');
+				var message = tweet.text.toLowerCase().split(' ');
 				for(var i = 0; i < message.length; i++) {
 					if(_.where(tagsQuery, {text: message[i]}).length) {
 						return true;

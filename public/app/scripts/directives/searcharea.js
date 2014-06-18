@@ -5,10 +5,10 @@ angular.module('twitterMapApp')
 		return {
 			templateUrl: 'templates/search-area.html',
 			restrict: 'A',
-			controller: function ( ) {
+			controller: function () {
 
 			},
-			link: function(scope){
+			link: function (scope) {
 				scope.tweets = [];
 
 
@@ -17,19 +17,109 @@ angular.module('twitterMapApp')
 				];
 
 
+				var roadAtlasStyles = [
+					{
+						"featureType": "road.highway",
+						"elementType": "geometry",
+						"stylers": [
+							{ "saturation": -100 },
+							{ "lightness": -8 },
+							{ "gamma": 1.18 }
+						]
+					},
+					{
+						"featureType": "road.arterial",
+						"elementType": "geometry",
+						"stylers": [
+							{ "saturation": -100 },
+							{ "gamma": 1 },
+							{ "lightness": -24 }
+						]
+					},
+					{
+						"featureType": "poi",
+						"elementType": "geometry",
+						"stylers": [
+							{ "saturation": -100 }
+						]
+					},
+					{
+						"featureType": "administrative",
+						"stylers": [
+							{ "saturation": -100 }
+						]
+					},
+					{
+						"featureType": "transit",
+						"stylers": [
+							{ "saturation": -100 }
+						]
+					},
+					{
+						"featureType": "water",
+						"elementType": "geometry.fill",
+						"stylers": [
+							{ "saturation": -100 }
+						]
+					},
+					{
+						"featureType": "road",
+						"stylers": [
+							{ "saturation": -100 }
+						]
+					},
+					{
+						"featureType": "administrative",
+						"stylers": [
+							{ "saturation": -100 }
+						]
+					},
+					{
+						"featureType": "landscape",
+						"stylers": [
+							{ "saturation": -100 }
+						]
+					},
+					{
+						"featureType": "poi",
+						"stylers": [
+							{ "saturation": -100 }
+						]
+					},
+					{
+					}
+				]
+
+
+				var styledMapOptions = {
+
+				};
+
+				var usRoadMapType = new google.maps.StyledMapType(
+					roadAtlasStyles, styledMapOptions);
+
+
+				var chicago = new google.maps.LatLng(41.878114, -87.629798);
+
 				var mapOptions = {
-					center: new google.maps.LatLng(37.774929500000000000, -122.419415500000010000),
-					zoom: 2,
-					mapTypeId: google.maps.MapTypeId.ROADMAP
+					zoom: 12,
+					center: chicago,
+					mapTypeId: google.maps.MapTypeId.ROADMAP,
+					mapTypeControlOptions: {
+						mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'usroadatlas']
+					}
 				};
 
 				var map = new google.maps.Map(document.getElementById('map'),
 					mapOptions);
 
+				map.mapTypes.set('usroadatlas', usRoadMapType);
+				map.setMapTypeId('usroadatlas');
+
 
 				var markers = [];
 				var socket = io.connect();
-				socket.on('tweet', function(data) {
+				socket.on('tweet', function (data) {
 					var myLatlng = new google.maps.LatLng(data.coordinates[1], data.coordinates[0]);
 					for(var i = 0; i < circles.length; i++) {
 						if(circles[i] && condition(circles[i], myLatlng) && $filter('tagsFilter')([data], scope.tagsQuery).length) {
@@ -46,7 +136,7 @@ angular.module('twitterMapApp')
 								content: "<img src='" + data.pic + "' style='float:left; padding: 5px;' /><strong>" + data.screen_name + "</strong>: " + data.text
 							});
 
-							google.maps.event.addListener(marker, 'click', function() {
+							google.maps.event.addListener(marker, 'click', function () {
 								infowindow.open(map, marker);
 							});
 
@@ -104,10 +194,10 @@ angular.module('twitterMapApp')
 					});
 					drawingManager.setMap(map);
 
-					google.maps.event.addListener(drawingManager, 'circlecomplete', function(circle) {
+					google.maps.event.addListener(drawingManager, 'circlecomplete', function (circle) {
 						circles.push(circle);
 
-						google.maps.event.addListener(circle, 'click', function(event) {
+						google.maps.event.addListener(circle, 'click', function (event) {
 							circle.setMap(null);
 
 							circles = _.without(circles, _.findWhere(circles, circle));

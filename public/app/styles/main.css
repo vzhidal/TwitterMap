@@ -1,3 +1,33 @@
+@font-face {
+    font-family: 'TomsHandwritten';
+    src: url('../fonts/toms/280747_0_0.eot');
+    src: url('../fonts/toms/280747_0_0.eot') format('embedded-opentype'),
+    url('../fonts/toms/280747_0_0.woff') format('woff'),
+    url('../fonts/toms/280747_0_0.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body *{
+    font-family: 'TomsHandwritten';
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.btn {
+    background: #fff;
+    border: 1px solid #686868;
+    padding: 0;
+    border-radius: 4px;
+    font-size: 22px;
+    color: #515151;
+    overflow: hidden;
+}
+
+
 #map {
 	height: 500px;
 	width: 1000px;
@@ -11,3 +41,4 @@
 	cursor: pointer;
 	margin-right: 2px;
 }
+

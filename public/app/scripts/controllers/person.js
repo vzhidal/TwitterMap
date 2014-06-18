@@ -1,11 +1,8 @@
 'use strict';
 
 angular.module('twitterMapApp')
-	.controller('PersonCtrl', function ($scope) {
-		$scope.tags = [
-			{text: 'ok', name: 'ok'},
-			{text: 'name', name: 'name'}
-		];
+	.controller('PersonCtrl', function ($scope, personSide) {
+		$scope.tags = personSide.tags;
 
 		$scope.filteredTweets = [];
 

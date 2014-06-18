@@ -102,7 +102,7 @@ angular.module('twitterMapApp')
 				var chicago = new google.maps.LatLng(41.878114, -87.629798);
 
 				var mapOptions = {
-					zoom: 12,
+					zoom: 9,
 					center: chicago,
 					mapTypeId: google.maps.MapTypeId.ROADMAP,
 					mapTypeControlOptions: {
@@ -128,7 +128,8 @@ angular.module('twitterMapApp')
 							var marker = new google.maps.Marker({
 								position: myLatlng,
 								animation: google.maps.Animation.DROP,
-								map: map
+								map: map,
+                                icon: 'images/location-marker.png'
 							});
 
 
@@ -173,11 +174,7 @@ angular.module('twitterMapApp')
 						drawingControlOptions: {
 							position: google.maps.ControlPosition.TOP_CENTER,
 							drawingModes: [
-								google.maps.drawing.OverlayType.MARKER,
-								google.maps.drawing.OverlayType.CIRCLE,
-								google.maps.drawing.OverlayType.POLYGON,
-								google.maps.drawing.OverlayType.POLYLINE,
-								google.maps.drawing.OverlayType.RECTANGLE
+								google.maps.drawing.OverlayType.CIRCLE
 							]
 						},
 						markerOptions: {

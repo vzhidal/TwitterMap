@@ -17,20 +17,20 @@
 	<div class="col-xs-12">
 		<div class="text-right map-controls">
 			<button class="btn btn-default">Clear Map</button>
-			<button class="btn btn-default"><i class="compas-icon">e</i>My Location</button>
+			<button class="btn btn-default"><i class="compas-icon">e</i>  My Location</button>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-xs-12">
-		<ul>
-			<li data-ng-repeat="tweet in filteredTweets = (tweets | tagsFilter:tagsQuery | reverse) | pagingFilter:paging">
-				<p>
-					<img src="{{tweet.pic}}">
-					<span>{{tweet.screen_name}}</span>
-				</p>
-
-				<p>{{tweet.text}}</p>
+		<ul class="tweets-log">
+			<li data-ng-repeat="tweet in filteredTweets = (tweets | tagsFilter:tagsQuery | reverse) | pagingFilter:paging" class="tweet">
+				<img src="{{tweet.pic}}" class="tweet-pic">
+                <div class="tweet-text">
+                    <span class="tweet-text-name"><a href="#">@{{tweet.screen_name}}</a></span>
+                    <span class="tweet-text-content">{{tweet.text}}</span>
+                </div>
+                <i class="close-icon"></i>
 			</li>
 		</ul>
 		<div data-custom-paging="paging"

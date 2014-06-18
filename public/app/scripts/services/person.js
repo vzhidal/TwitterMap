@@ -6,7 +6,15 @@ angular.module('twitterMapApp')
 			tags: [
 				{text: 'kill', name: 'kill'},
 				{text: 'fire', name: 'fire'},
+				{text: 'crime', name: 'crime'},
+				{text: 'help', name: 'help'},
+				{text: 'murder', name: 'murder'},
+				{text: 'danger', name: 'danger'},
+				{text: 'urgent', name: 'urgent'},
+				{text: 'action', name: 'action'},
 				{text: 'action', name: 'action'}
+
+
 			]
 		},
 		regular: {

@@ -1,9 +1,7 @@
 @font-face {
     font-family: 'TomsHandwritten';
     src: url('../fonts/toms/280747_0_0.eot');
-    src: url('../fonts/toms/280747_0_0.eot') format('embedded-opentype'),
-    url('../fonts/toms/280747_0_0.woff') format('woff'),
-    url('../fonts/toms/280747_0_0.ttf') format('truetype');
+    src: url('../fonts/toms/280747_0_0.eot') format('embedded-opentype'), url('../fonts/toms/280747_0_0.woff') format('woff'), url('../fonts/toms/280747_0_0.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -11,15 +9,28 @@
 @font-face {
     font-family: 'NinjamockBasic';
     src: url('../fonts/Basic/Basic.eot');
-    src: url('../fonts/Basic/Basic.eot') format('embedded-opentype'),
-    url('../fonts/Basic/Basic.woff') format('woff'),
-    url('../fonts/Basic/Basic.svg#Basic') format('svg'),
-    url('../fonts/Basic/Basic.ttf') format('truetype');
+    src: url('../fonts/Basic/Basic.eot') format('embedded-opentype'), url('../fonts/Basic/Basic.woff') format('woff'), url('../fonts/Basic/Basic.svg#Basic') format('svg'), url('../fonts/Basic/Basic.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-body *{
+html, body, .container, .container-inner {
+    height: 100%;
+}
+
+.content-wrapper {
+    min-height: 100%;
+    box-sizing: border-box;
+    margin-bottom: -53px;
+}
+
+.content-wrapper:after {
+    content: "";
+    height: 53px;
+    display: block;
+}
+
+body * {
     font-family: 'TomsHandwritten';
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -44,7 +55,7 @@ body *{
     background: #eee;
 }
 
-.navbar-default .navbar-nav > li > a{
+.navbar-default .navbar-nav > li > a {
     font-size: 22px;
     color: #0088cc;
 }
@@ -53,7 +64,7 @@ body *{
     background: #ccc;
 }
 
-.navbar li.active a{
+.navbar li.active a {
     color: #515151;
     background: #ccc;
 }
@@ -67,7 +78,7 @@ body *{
     text-align: center;
 }
 
-.who-am-i .btn{
+.who-am-i .btn {
     width: 200px;
     font-size: 26px;
     margin-top: 8px;
@@ -81,11 +92,11 @@ body *{
     float: right;
 }
 
-.who-am-i-text{
+.who-am-i-text {
     font-size: 38px;
 }
 
-tags-input .tags .input{
+tags-input .tags .input {
     font-family: 'TomsHandwritten';
     font-size: 22px;
 }
@@ -101,7 +112,7 @@ tags-input .tags {
     border-bottom-color: #686868;
 }
 
-.compas-icon{
+.compas-icon {
     font-size: 18px;
     font-family: NinjamockBasic;
     text-align: center;
@@ -115,38 +126,126 @@ tags-input .tags {
 
 /*endregion header*/
 
+/*region searcharea*/
+
 #map {
     margin: 20px 0;
-	height: 280px;
-	width: 100%;
+    height: 280px;
+    width: 100%;
 }
 
 .tags-list {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .tags-list li {
-	list-style: none;
-	padding: 0;
-	margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
 }
 
 .tags-list .tag {
-	background: #add8e6;
-	color: white;
-	padding: 10px 15px;
-	display: inline-block;
-	cursor: pointer;
-	margin-right: 5px;
+    background: #fff;
+    color: #515151;
+    padding: 5px 15px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 5px 5px 0;
 }
+
+.tags-list .tag:hover, .tags-list .tag:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0, 136, 204, .6);
+}
+
+tags-input .tags .tag-item {
+    font-size: 20px;
+}
+
+ul.tweets-log {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto 0;
+    width: 95%;
+}
+
+li.tweet {
+    border: 1px solid #686868;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    padding-right: 20px;
+    margin-bottom: 8px;
+}
+
+.tweet-pic {
+    margin: 4px;
+    float: left;
+}
+
+.tweet-text {
+    display: inline-block;
+    float: left;
+    text-align: left;
+    padding-left: 10px;
+    width: 80%;
+}
+
+.tweet-text-name {
+    display: block;
+    font-size: 24px;
+}
+
+.tweet-text-content {
+    display: block;
+    font-size: 20px;
+}
+
+.close-icon {
+    width: 24px;
+    height: 10px;
+    line-height: 10px;
+    font-size: 8px;
+    font-family: 'NinjamockBasic';
+    font-style: normal;
+    text-align: center;
+    color: #515151;
+}
+
+.tweet .close-icon {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+.custom-paging {
+    text-align: center;
+}
+
+.custom-paging a {
+    font-size: 20px;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    color: #555;
+    background-color: #ccc;
+    border-color: #ccc;
+}
+
+/*endregion searcharea*/
 
 /* region footer*/
 
 footer .navbar {
     text-align: center;
     position: relative;
+    margin-bottom: 0;
 }
 
 .copyright {
@@ -157,7 +256,7 @@ footer .navbar {
 
 #shareContainer {
     float: right;
-    margin: 10px 0;
+    margin: 10px 0 0;
     position: absolute;
     right: 20px;
 }
@@ -210,7 +309,7 @@ footer .navbar {
 }
 
 #shareContainer li a.facebook:hover {
-    background-position: left  -40px;
+    background-position: left -40px;
 }
 
 #shareContainer li a.twitter:hover {
@@ -220,12 +319,13 @@ footer .navbar {
 #shareContainer li a.pinterest:hover {
     background-position: -80px -40px;
 }
+
 #shareContainer li a.googleplus:hover {
-    background-position: -120px  -40px;
+    background-position: -120px -40px;
 }
 
 #shareContainer li a.instagram:hover {
-    background-position: -160px  -40px;
+    background-position: -160px -40px;
 }
 
 #shareContainer li a.youtube:hover {
@@ -243,17 +343,17 @@ footer .navbar {
 /* endregion footer*/
 
 .avatar {
-	width: 200px;
-	height: 174px;
-	margin: 0 auto;
-	background: center center no-repeat;
-	background-size: 100% 100%;
+    width: 200px;
+    height: 174px;
+    margin: 0 auto;
+    background: center center no-repeat;
+    background-size: 100% 100%;
 }
 
 .avatar.hero {
-	background-image: url("../images/hero.jpg");
+    background-image: url("../images/hero.jpg");
 }
 
 .avatar.regular {
-	background-image: url("../images/hero.jpg");
+    background-image: url("../images/regular.jpg");
 }

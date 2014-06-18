@@ -3,7 +3,7 @@
 angular.module('twitterMapApp', ['ui.router', 'ngTagsInput', 'ui.bootstrap', 'ngResource', 'angular-loading-bar']);
 
 
-angular.module('twitterMapApp').config(function ($stateProvider, $urlRouterProvider) {
+angular.module('twitterMapApp').config(function ($stateProvider, $urlRouterProvider, person) {
 	$urlRouterProvider.otherwise("/regular");
 
 	$stateProvider
@@ -15,11 +15,21 @@ angular.module('twitterMapApp').config(function ($stateProvider, $urlRouterProvi
 		.state('home.hero', {
 			url: 'hero',
 			templateUrl: 'views/hero.html',
-			controller: 'PersonCtrl as personCtrl'
+			controller: 'PersonCtrl as personCtrl',
+			resolve: {
+				personSide: function(){
+					return person.hero;
+				}
+			}
 		})
 		.state('home.regular', {
 			url: 'regular',
 			templateUrl: 'views/regular.html',
-			controller: 'PersonCtrl as personCtrl'
+			controller: 'PersonCtrl as personCtrl',
+			resolve: {
+				personSide: function(){
+					return person.regular;
+				}
+			}
 		})
 });

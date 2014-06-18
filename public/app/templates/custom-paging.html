@@ -6,7 +6,8 @@
 		 data-max-size="paging.maxSize"
 		 data-boundary-links="true"
 		 class="custom-paging-item pagination"></div>
-	<select data-ng-model="paging.numPerPage" class="custom-paging-item form-control">
+
+	<select data-ng-show="false" data-ng-model="paging.numPerPage" class="custom-paging-item form-control">
 		<option data-ng-repeat="numPerPage in paging.itemsPerPage track by $index"
 				value="{{numPerPage}}">
 			{{numPerPage}}

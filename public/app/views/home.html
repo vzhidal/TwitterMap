@@ -1,28 +1,20 @@
-<div id="map"></div>
-<h1>Tags list:</h1>
-<span class="tag" data-ng-click="addTagg(tag.name)"
-	  data-ng-repeat="tag in tags">
-			{{tag.name}}
-		</span>
-<div class="search-box">
-	<div data-tags-filter
-		 data-tags-query="tagsQuery"
-		 data-tags="tags"></div>
+<header></header>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="who-am-i">
+			<button class="btn" data-ui-sref="hero">Hero</button>
+			<span class="who-am-i-text">Who am I?</span>
+			<button class="btn" data-ui-sref="regular">Regular</button>
+		</div>
+	</div>
 </div>
-<div data-custom-paging="paging"
-	 data-total-items="filteredTweets.length"></div>
+<div class="row">
+	<div class="col-xs-12">
+		<div data-ui-view></div>
+	</div>
+</div>
+<footer></footer>
 
-<ul>
-	<li data-ng-repeat="tweet in filteredTweets = (tweets | tagsFilter:tagsQuery | reverse) | pagingFilter:paging">
-		<p>
-			<img src="{{tweet.pic}}">
-			<span>{{tweet.screen_name}}</span>
-		</p>
 
-		<p>{{tweet.text}}</p>
-	</li>
-</ul>
 
-<div data-custom-paging="paging"
-	 data-total-items="filteredTweets.length"></div>
 

@@ -27,10 +27,11 @@
 			<li data-ng-repeat="tweet in filteredTweets = (tweets | tagsFilter:tagsQuery | reverse) | pagingFilter:paging" class="tweet">
 				<img src="{{tweet.pic}}" class="tweet-pic">
                 <div class="tweet-text">
-                    <span class="tweet-text-name"><a href="#">@{{tweet.screen_name}}</a></span>
+                    <span class="tweet-text-name">{{tweet.user_name}}: <a href="#">@{{tweet.screen_name}}</a><span class="tweet-time">{{tweet.created_at | date:'hh:mm:ss'}}</span></span>
                     <span class="tweet-text-content">{{tweet.text}}</span>
                 </div>
                 <i class="close-icon"></i>
+                <span class="tweet-controls"></span>
 			</li>
 		</ul>
 		<div data-custom-paging="paging"

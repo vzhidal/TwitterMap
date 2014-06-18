@@ -38,6 +38,8 @@ io.sockets.on('connection', function (socket) {
 			socket.emit('tweet', {
 				pic: tweet.user.profile_image_url,
 				screen_name: tweet.user.screen_name,
+                user_name: tweet.user.name,
+                created_at: tweet.created_at,
 				coordinates: tweet.coordinates.coordinates,
 				text: tweet.text
 			});

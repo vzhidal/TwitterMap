@@ -142,6 +142,7 @@ angular.module('twitterMapApp')
 							});
 
 							markers.push(marker);
+                            data.created_at = new Date(data.created_at);
 
 							scope.tweets.push(data);
 							if(scope.tweets.length > 1000) {
@@ -174,7 +175,9 @@ angular.module('twitterMapApp')
 						drawingControlOptions: {
 							position: google.maps.ControlPosition.TOP_CENTER,
 							drawingModes: [
-								google.maps.drawing.OverlayType.CIRCLE
+								google.maps.drawing.OverlayType.CIRCLE,
+								google.maps.drawing.OverlayType.POLYGON,
+								google.maps.drawing.OverlayType.RECTANGLE
 							]
 						},
 						markerOptions: {
